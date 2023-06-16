@@ -9,7 +9,5 @@ public class Node {
         next = null;
     }
 
-    public static void main(String[] args) {
 
-    }
 }
