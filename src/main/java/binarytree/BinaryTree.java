@@ -1,5 +1,8 @@
 package binarytree;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class BinaryTree {
     BNode root;
 
@@ -61,5 +64,29 @@ public class BinaryTree {
        //left,right, root
         System.out.println("\nPostorder traversal");
         binaryTree.postOrder(binaryTree.root);
+
+        System.out.println(getFormatedDate());
     }
+    public static String getFormatedDate(){
+        String dayNumberSuffix = getDayNumberSuffix(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+        SimpleDateFormat dateFormat = new SimpleDateFormat(" d'" + dayNumberSuffix + "' MMMM yyyy");
+        return dateFormat.format(Calendar.getInstance().getTime());
+    }
+
+    private static String getDayNumberSuffix(int day) {
+        if (day >= 11 && day <= 13) {
+            return "<sup>th</sup>";
+        }
+        switch (day % 10) {
+            case 1:
+                return "<sup>st</sup>";
+            case 2:
+                return "<sup>nd</sup>";
+            case 3:
+                return "<sup>rd</sup>";
+            default:
+                return "<sup>th</sup>";
+        }
+    }
+
 }
